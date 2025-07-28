@@ -1,10 +1,12 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.admin') {{-- Ini akan menggunakan layout admin yang kita buat --}}
 
+@section('header') {{-- Konten untuk slot 'header' di layouts/admin.blade.php --}}
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        {{ __('Admin Dashboard') }}
+    </h2>
+@endsection
+
+@section('content') {{-- Konten utama dashboard akan masuk ke section 'content' di layouts/admin.blade.php --}}
     <div class="py-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
@@ -25,7 +27,8 @@
                             Go to Content Management
                         </a>
                         {{-- Tombol "Back to Home" --}}
-                        <a href="http://localhost:5173/home" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:-translate-y-1">
+                        {{-- Mengarahkan ke root aplikasi Laravel yang sekarang dilayani oleh React --}}
+                        <a href="{{ url('http://127.0.0.1:8000/home') }}" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:-translate-y-1">
                             <svg class="-ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H16a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                             </svg>
@@ -36,28 +39,29 @@
             </div>
         </div>
     </div>
-</x-app-layout>
 
-<style>
-    .shadow-xl {
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); /* Shadow yang lebih dalam untuk kartu */
-    }
-    .sm\:rounded-lg {
-        border-radius: 12px; /* Konsisten dengan login page */
-    }
-    .bg-white {
-        background-color: #ffffff;
-    }
-    .bg-gray-50 {
-        background-color: #F8F8F8; /* Latar belakang yang lebih terang */
-    }
-    .text-blue-600 {
-        color: #196ECD !important;
-    }
-    .bg-blue-600 {
-        background-color: #196ECD !important;
-    }
-    .hover\:bg-blue-700:hover {
-        background-color: #0C3766 !important;
-    }
-</style>
+    <style>
+        /* Gaya ini bisa dipindahkan ke file CSS Anda (app.css) jika Anda ingin */
+        .shadow-xl {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); /* Shadow yang lebih dalam untuk kartu */
+        }
+        .sm\:rounded-lg {
+            border-radius: 12px; /* Konsisten dengan login page */
+        }
+        .bg-white {
+            background-color: #ffffff;
+        }
+        .bg-gray-50 {
+            background-color: #F8F8F8; /* Latar belakang yang lebih terang */
+        }
+        .text-blue-600 {
+            color: #196ECD !important;
+        }
+        .bg-blue-600 {
+            background-color: #196ECD !important;
+        }
+        .hover\:bg-blue-700:hover {
+            background-color: #0C3766 !important;
+        }
+    </style>
+@endsection
